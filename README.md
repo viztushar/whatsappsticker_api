@@ -1,4 +1,4 @@
-# whatsappsticker_api
+# whatsappstickerapi
 
 [![pub package](https://img.shields.io/pub/v/whatsappstickerapi.svg)](https://pub.dartlang.org/packages/whatsappstickerapi)
 
