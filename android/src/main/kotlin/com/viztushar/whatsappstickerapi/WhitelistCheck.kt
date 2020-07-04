@@ -8,7 +8,7 @@ import android.net.Uri
 object WhitelistCheck {
     private const val AUTHORITY_QUERY_PARAM = "authority"
     private const val IDENTIFIER_QUERY_PARAM = "identifier"
-    private val STICKER_APP_AUTHORITY: String = BuildConfig.CONTENT_PROVIDER_AUTHORITY
+
     var CONSUMER_WHATSAPP_PACKAGE_NAME = "com.whatsapp"
     var SMB_WHATSAPP_PACKAGE_NAME = "com.whatsapp.w4b"
     private const val CONTENT_PROVIDER = ".provider.sticker_whitelist_check"
@@ -34,7 +34,7 @@ object WhitelistCheck {
             val providerInfo = packageManager.resolveContentProvider(whatsappProviderAuthority, PackageManager.GET_META_DATA)
                     ?: return false
             // provider is not there. The WhatsApp app may be an old version.
-            val queryUri = Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority(whatsappProviderAuthority).appendPath(QUERY_PATH).appendQueryParameter(AUTHORITY_QUERY_PARAM, STICKER_APP_AUTHORITY).appendQueryParameter(IDENTIFIER_QUERY_PARAM, identifier).build()
+            val queryUri = Uri.Builder().scheme(ContentResolver.SCHEME_CONTENT).authority(whatsappProviderAuthority).appendPath(QUERY_PATH).appendQueryParameter(AUTHORITY_QUERY_PARAM, WhatsappstickerApiPlugin.getContentProviderAuthority(context)).appendQueryParameter(IDENTIFIER_QUERY_PARAM, identifier).build()
             context.contentResolver.query(queryUri, null, null, null, null).use { cursor ->
                 if (cursor != null && cursor.moveToFirst()) {
                     val whiteListResult = cursor.getInt(cursor.getColumnIndexOrThrow(QUERY_RESULT_COLUMN_NAME))
