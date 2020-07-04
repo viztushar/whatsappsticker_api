@@ -1,4 +1,4 @@
-package com.viztushar.whatsappsticker_api
+package com.viztushar.whatsappstickerapi
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -12,9 +12,9 @@ import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import com.fxn.stash.Stash
-import com.viztushar.whatsappsticker_api.TestActivity.createIntentToAddStickerPack
-import com.viztushar.whatsappsticker_api.mode.Sticker
-import com.viztushar.whatsappsticker_api.mode.StickerPack
+import com.viztushar.whatsappstickerapi.TestActivity.createIntentToAddStickerPack
+import com.viztushar.whatsappstickerapi.mode.Sticker
+import com.viztushar.whatsappstickerapi.mode.StickerPack
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding
 import io.flutter.embedding.engine.plugins.activity.ActivityAware

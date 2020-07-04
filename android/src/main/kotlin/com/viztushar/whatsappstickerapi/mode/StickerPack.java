@@ -1,4 +1,4 @@
-package com.viztushar.whatsappsticker_api.mode;
+package com.viztushar.whatsappstickerapi.mode;
 
 import android.os.Parcel;
 import android.os.Parcelable;

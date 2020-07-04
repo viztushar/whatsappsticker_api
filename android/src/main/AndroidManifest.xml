@@ -9,7 +9,7 @@
         android:fullBackupContent="false">
 
         <provider
-            android:name=".provider.StickerContentProvider"
+            android:name="com.viztushar.whatsappstickerapi.provider.StickerContentProvider"
             android:authorities="${applicationId}.stickercontentprovider"
             android:enabled="true"
             android:exported="true"

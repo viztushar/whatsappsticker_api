@@ -1,4 +1,4 @@
-package com.viztushar.whatsappsticker_api
+package com.viztushar.whatsappstickerapi
 
 import android.content.ContentResolver
 import android.content.Context

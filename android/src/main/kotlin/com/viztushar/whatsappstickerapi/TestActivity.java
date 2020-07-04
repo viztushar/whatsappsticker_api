@@ -1,4 +1,4 @@
-package com.viztushar.whatsappsticker_api;
+package com.viztushar.whatsappstickerapi;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,10 +14,10 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry;
 
-import static com.viztushar.whatsappsticker_api.WhatsappstickerApiPlugin.ADD_PACK;
-import static com.viztushar.whatsappsticker_api.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_AUTHORITY;
-import static com.viztushar.whatsappsticker_api.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_ID;
-import static com.viztushar.whatsappsticker_api.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_NAME;
+import static com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin.ADD_PACK;
+import static com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_AUTHORITY;
+import static com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_ID;
+import static com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_NAME;
 
 public class TestActivity implements PluginRegistry.ActivityResultListener {
     Result result;

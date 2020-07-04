@@ -1,4 +1,4 @@
-package com.viztushar.whatsappsticker_api.provider;
+package com.viztushar.whatsappstickerapi.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -19,9 +19,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
 import com.fxn.stash.Stash;
-import com.viztushar.whatsappsticker_api.WhatsappstickerApiPlugin;
-import com.viztushar.whatsappsticker_api.mode.Sticker;
-import com.viztushar.whatsappsticker_api.mode.StickerPack;
+import com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin;
+import com.viztushar.whatsappstickerapi.mode.Sticker;
+import com.viztushar.whatsappstickerapi.mode.StickerPack;
 
 import java.io.File;
 import java.io.FileNotFoundException;
