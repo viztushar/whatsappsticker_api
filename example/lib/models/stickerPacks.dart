@@ -19,6 +19,10 @@ class StickerPacks {
   String licenseagreementwebsite;
   @JsonKey(name: 'stickers')
   List<Stickers> stickers;
+  @JsonKey(name: 'image_data_version')
+  String imagedataversion;
+  @JsonKey(name: 'avoid_cache')
+  bool avoidcache;
 
   StickerPacks(
       {this.identifier,
@@ -29,7 +33,9 @@ class StickerPacks {
       this.publisherwebsite,
       this.privacypolicywebsite,
       this.licenseagreementwebsite,
-      this.stickers});
+      this.stickers,
+      this.imagedataversion,
+      this.avoidcache});
 
   factory StickerPacks.fromJson(Map<String, dynamic> json) =>
       _$StickerPacksFromJson(json);
@@ -45,6 +51,8 @@ class StickerPacks {
   String get privacyPolicyWebsite => privacypolicywebsite;
   String get licenseAgreementWebsite => licenseagreementwebsite;
   List<Stickers> get sticker => stickers;
+  String get imageDataVersion => imagedataversion;
+  bool get avoidCache => avoidcache;
 
   set identiFier(String identifier) {
     this.identifier = identifier;
@@ -80,5 +88,13 @@ class StickerPacks {
 
   set sticker(List<Stickers> stickers) {
     this.stickers = stickers;
+  }
+
+   set imageDataVersions(String imageDataVersion) {
+    this.imagedataversion = imageDataVersion;
+  }
+
+  set avoidCaches(bool avoidCache) {
+    this.avoidcache = avoidCache;
   }
 }

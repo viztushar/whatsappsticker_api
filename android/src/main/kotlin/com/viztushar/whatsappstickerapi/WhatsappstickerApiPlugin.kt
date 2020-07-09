@@ -94,14 +94,13 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
     @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
         this.result = result
-        Log.d(TAG, "onMethodCall: ")
         when (call.method) {
             "addTOJson" -> {
                 addToJson(call.argument("identiFier"), call.argument("name"),
                         call.argument("publisher"), call.argument("trayimagefile"),
                         call.argument("publisheremail"), call.argument("publisherwebsite"),
                         call.argument("privacypolicywebsite"), call.argument("licenseagreementwebsite"),
-                        Objects.requireNonNull(call.argument("sticker_image")), result)
+                        Objects.requireNonNull(call.argument("sticker_image")),Objects.requireNonNull(call.argument("image_data_version")),Objects.requireNonNull(call.argument("avoid_cache")), result)
             }
             "addStickerPackToWhatsApp" -> {
                 addStickerPackToWhatsApp(call.argument("identifier"), call.argument("name"))
@@ -140,7 +139,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
     private fun addToJson(identifier: String?, name: String?, publisher: String?,
                           tray_image_file: String?, publisher_email: String?, publisher_website: String?, privacy_policy_website: String?,
                           license_agreement_website: String?,
-                          sticker: ArrayList<*>, @NonNull result: Result) {
+                          sticker: ArrayList<*>,imagedataversion: String?,avoidcache: Boolean, @NonNull result: Result) {
         Log.d(TAG, "addToJson: $tray_image_file")
         val stickers = ArrayList<Sticker>()
         for (i in sticker.indices) {
@@ -154,7 +153,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
                 publisher_email,
                 publisher_website,
                 privacy_policy_website,
-                license_agreement_website, "1", true)
+                license_agreement_website, imagedataversion, avoidcache)
         stickerPack.setAndroidPlayStoreLink("https://play.google.com/store/apps/details?id=" + context.packageName.toString())
         stickerPack.setIosAppStoreLink("")
         stickerPack.setStickers(stickers)
@@ -210,6 +209,10 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
                     launchIntentToAddPackToSpecificPackage(identifier, stickerPackName, WhitelistCheck.SMB_WHATSAPP_PACKAGE_NAME)
                 } else {
                     Toast.makeText(context, "Sticker pack not added. If you\\'d like to add it, make sure you update to the latest version of WhatsApp.", Toast.LENGTH_LONG).show()
+
+                    if(WhitelistCheck.isWhitelisted(context,identifier)){
+                        launchIntentToAddPackToSpecificPackage(identifier, stickerPackName, WhitelistCheck.CONSUMER_WHATSAPP_PACKAGE_NAME)
+                    }
                 }
             }
 

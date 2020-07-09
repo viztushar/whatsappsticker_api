@@ -13,8 +13,8 @@ enum StickerPackResult {
 }
 
 class WhatsappstickerApi {
-  static const MethodChannel _channel =
-      const MethodChannel('com.viztushar.whatsappstickerapi.whatsappstickerapi/whatsappstickerapi');
+  static const MethodChannel _channel = const MethodChannel(
+      'com.viztushar.whatsappstickerapi.whatsappstickerapi/whatsappstickerapi');
 
   static Future<dynamic> addToJson(
       {@required String identiFier,
@@ -25,7 +25,11 @@ class WhatsappstickerApi {
       @required String publisherwebsite,
       @required String privacypolicywebsite,
       @required String licenseagreementwebsite,
+      @required String imagedataversion,
+      bool avoidcache = false,
       @required List<String> stickerImages}) async {
+        print(imagedataversion);
+        print(avoidcache);
     try {
       var result = await _channel.invokeMapMethod("addTOJson", {
         "identiFier": identiFier,
@@ -36,6 +40,8 @@ class WhatsappstickerApi {
         "publisherwebsite": publisherwebsite,
         "privacypolicywebsite": privacypolicywebsite,
         "licenseagreementwebsite": licenseagreementwebsite,
+        "image_data_version": imagedataversion,
+        "avoid_cache": avoidcache,
         "sticker_image": stickerImages,
       });
       print(result);
