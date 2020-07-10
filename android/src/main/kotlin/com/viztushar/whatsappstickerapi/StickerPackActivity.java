@@ -8,9 +8,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import io.flutter.app.FlutterActivity;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry;
 
@@ -19,12 +16,12 @@ import static com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin.EXTRA_ST
 import static com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_ID;
 import static com.viztushar.whatsappstickerapi.WhatsappstickerApiPlugin.EXTRA_STICKER_PACK_NAME;
 
-public class TestActivity implements PluginRegistry.ActivityResultListener {
+public class StickerPackActivity implements PluginRegistry.ActivityResultListener {
     Result result;
-    String TAG = TestActivity.class.getSimpleName();
+    String TAG = StickerPackActivity.class.getSimpleName();
     private Context context;
 
-    TestActivity(Result result, @NonNull Context context) {
+    StickerPackActivity(Result result, @NonNull Context context) {
         this.result = result;
         this.context = context;
     }

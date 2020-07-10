@@ -5,14 +5,13 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.annotation.RequiresApi
 import com.fxn.stash.Stash
-import com.viztushar.whatsappstickerapi.TestActivity.createIntentToAddStickerPack
+import com.viztushar.whatsappstickerapi.StickerPackActivity.createIntentToAddStickerPack
 import com.viztushar.whatsappstickerapi.mode.Sticker
 import com.viztushar.whatsappstickerapi.mode.StickerPack
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -24,9 +23,9 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry
 import io.flutter.plugin.common.PluginRegistry.Registrar
 import java.util.*
+import kotlin.collections.ArrayList
 
 /** WhatsappstickerApiPlugin */
 class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware {
@@ -168,7 +167,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
             intent.putExtra(EXTRA_STICKER_PACK_NAME, name)
             try {
                 //activityBinding?.activity?.startActivityForResult(intent, ADD_PACK)
-              val t = TestActivity(result,context)
+              val t = StickerPackActivity(result, context)
               activityBinding?.addActivityResultListener(t);
               activity?.startActivityForResult(intent, ADD_PACK)
               result.success("success")
@@ -187,6 +186,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
             toast.show()
             result.error("need3stickerormore", "need 3 or more sticker", "You need 3 or more sticker per pack")
         }
+
     }
 
     fun addStickerPackToWhatsApp(identifier: String?, stickerPackName: String?) {
@@ -225,7 +225,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
     private fun launchIntentToAddPackToSpecificPackage(identifier: String?, stickerPackName: String?, whatsappPackageName: String) {
         val intent = createIntentToAddStickerPack(getContentProviderAuthority(context),identifier, stickerPackName)
         intent.setPackage(whatsappPackageName)
-        try { val t = TestActivity(result,context)
+        try { val t = StickerPackActivity(result, context)
           activityBinding?.addActivityResultListener(t);
           activity?.startActivityForResult(intent, ADD_PACK)
         } catch (e: ActivityNotFoundException) {
@@ -237,7 +237,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
     private fun launchIntentToAddPackToChooser(identifier: String?, stickerPackName: String?) {
         val intent = createIntentToAddStickerPack( getContentProviderAuthority(context),identifier, stickerPackName)
         try {
-          val t = TestActivity(result,context)
+          val t = StickerPackActivity(result, context)
           activityBinding?.addActivityResultListener(t);
             activity?.startActivityForResult(Intent.createChooser(intent, "Add to WhatsApp"), ADD_PACK)
         } catch (e: ActivityNotFoundException) {
