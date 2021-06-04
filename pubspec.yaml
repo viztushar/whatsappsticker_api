@@ -5,7 +5,7 @@ maintainer: Tushar Parmar <viztushar@gmail.com>
 homepage: https://github.com/viztushar/whatsappsticker_api
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.10.0"
 
 dependencies:
