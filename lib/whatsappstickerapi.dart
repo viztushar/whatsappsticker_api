@@ -28,8 +28,6 @@ class WhatsappstickerApi {
       required String? imagedataversion,
       bool avoidcache = false,
       required List<String>? stickerImages}) async {
-    print(imagedataversion);
-    print(avoidcache);
     try {
       var result = await _channel.invokeMapMethod("addTOJson", {
         "identiFier": identiFier,
