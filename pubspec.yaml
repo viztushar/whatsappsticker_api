@@ -1,11 +1,11 @@
 name: whatsappstickerapi
 description: Flutter plugin for adding WhatsApp Internet Base Stickers  within your flutter app.
-version: 0.0.2
+version: 0.1.0
 maintainer: Tushar Parmar <viztushar@gmail.com>
 homepage: https://github.com/viztushar/whatsappsticker_api
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.10.0"
 
 dependencies:

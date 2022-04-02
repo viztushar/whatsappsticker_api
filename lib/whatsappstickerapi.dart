@@ -17,19 +17,19 @@ class WhatsappstickerApi {
       'com.viztushar.whatsappstickerapi.whatsappstickerapi/whatsappstickerapi');
 
   static Future<dynamic> addToJson(
-      {@required String identiFier,
-      @required String name,
-      @required String publisher,
-      @required String trayimagefile,
-      @required String publisheremail,
-      @required String publisherwebsite,
-      @required String privacypolicywebsite,
-      @required String licenseagreementwebsite,
-      @required String imagedataversion,
+      {required String? identiFier,
+      required String? name,
+      required String? publisher,
+      required String? trayimagefile,
+      required String? publisheremail,
+      required String? publisherwebsite,
+      required String? privacypolicywebsite,
+      required String? licenseagreementwebsite,
+      required String? imagedataversion,
       bool avoidcache = false,
-      @required List<String> stickerImages}) async {
-        print(imagedataversion);
-        print(avoidcache);
+      required List<String>? stickerImages}) async {
+    print(imagedataversion);
+    print(avoidcache);
     try {
       var result = await _channel.invokeMapMethod("addTOJson", {
         "identiFier": identiFier,
@@ -52,7 +52,7 @@ class WhatsappstickerApi {
   }
 
   static Future<void> addStickerPackToWhatsApp(
-      {@required String identifier, @required String name}) async {
+      {required String? identifier, required String? name}) async {
     try {
       await _channel.invokeMapMethod(
           "addStickerPackToWhatsApp", {"identifier": identifier, "name": name});
