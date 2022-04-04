@@ -50,7 +50,7 @@ object WhitelistCheck {
 
     fun isPackageInstalled(packageName: String?, packageManager: PackageManager): Boolean {
         return try {
-            val applicationInfo = packageManager.getApplicationInfo(packageName, 0)
+            val applicationInfo = packageName?.let { packageManager.getApplicationInfo(it, 0) }
             applicationInfo?.enabled ?: false
         } catch (e: PackageManager.NameNotFoundException) {
             false

@@ -15,33 +15,30 @@ import com.viztushar.whatsappstickerapi.StickerPackActivity.createIntentToAddSti
 import com.viztushar.whatsappstickerapi.mode.Sticker
 import com.viztushar.whatsappstickerapi.mode.StickerPack
 import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.embedding.engine.plugins.FlutterPlugin.FlutterPluginBinding
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry.Registrar
+import io.flutter.plugin.common.PluginRegistry
 import java.util.*
 import kotlin.collections.ArrayList
 
 /** WhatsappstickerApiPlugin */
-class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAware {
+class WhatsappstickerApiPlugin() : FlutterPlugin, MethodChannel.MethodCallHandler, ActivityAware {
     private var methodChannel: MethodChannel? = null
     private lateinit var context: Context
     private var activity: Activity? = null
-    private lateinit var result: Result
+    private lateinit var result: MethodChannel.Result
     private var stickerPacks = ArrayList<StickerPack>()
     private val TAG = WhatsappstickerApiPlugin::class.java.simpleName
-    private var pluginBinding: FlutterPluginBinding? = null
+    private var pluginBinding: FlutterPlugin.FlutterPluginBinding? = null
     private var activityBinding: ActivityPluginBinding? = null
 
 
     companion object {
         @JvmStatic
-        fun registerWith(registrar: Registrar) {
+        fun registerWith(registrar: PluginRegistry.Registrar) {
             if (registrar.activity() == null) {
                 // If a background flutter view tries to register the plugin, there will be no activity from the registrar,
                 // we stop the registering process immediately because the ImagePicker requires an activity.
@@ -91,7 +88,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
 
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: MethodChannel.Result) {
         this.result = result
         when (call.method) {
             "addTOJson" -> {
@@ -138,7 +135,7 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
     private fun addToJson(identifier: String?, name: String?, publisher: String?,
                           tray_image_file: String?, publisher_email: String?, publisher_website: String?, privacy_policy_website: String?,
                           license_agreement_website: String?,
-                          sticker: ArrayList<*>,imagedataversion: String?,avoidcache: Boolean, @NonNull result: Result) {
+                          sticker: ArrayList<*>,imagedataversion: String?,avoidcache: Boolean, @NonNull result: MethodChannel.Result) {
         Log.d(TAG, "addToJson: $tray_image_file")
         val stickers = ArrayList<Sticker>()
         for (i in sticker.indices) {
@@ -286,5 +283,6 @@ class WhatsappstickerApiPlugin() : FlutterPlugin, MethodCallHandler, ActivityAwa
         methodChannel?.setMethodCallHandler(null)
         methodChannel = null
     }
+
 
 }

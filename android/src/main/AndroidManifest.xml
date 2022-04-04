@@ -3,7 +3,7 @@
   package="com.viztushar.whatsappsticker_api">
 
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         tools:ignore="GoogleAppIndexingWarning"
         android:allowBackup="false"
         android:fullBackupContent="false">
@@ -16,6 +16,10 @@
             android:readPermission="com.whatsapp.sticker.READ"
             />
         <!-- android:readPermission="com.whatsapp.sticker.READ" -->
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
     </application>
 
 </manifest>
