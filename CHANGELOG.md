@@ -1,3 +1,8 @@
+## 0.1.2
+
+- added null safety
+- fix Android v1 embedding
+
 ## 0.1.1
 
 - added null safety

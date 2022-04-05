@@ -21,8 +21,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-   final String url =
-      'https://gist.githubusercontent.com/viztushar/e359e5aeadc4fcfece7b48149fb580fe/raw/47e92af7485fdd2c48d0e0d8ac46e0b2dbb13418/whatsapp.json';
+  final String url =
+      'https://gist.githubusercontent.com/viztushar/e359e5aeadc4fcfece7b48149fb580fe/raw/b58fe6d6d0607a423d9a6ba5fd0a4ec3a0b8f2c4/whatsapp.json';
   StickerPacks stickerPack = StickerPacks();
   List<StickerPacks> st = List<StickerPacks>();
   bool isLoading, isDownloading = true;
@@ -301,20 +301,21 @@ class _MyHomePageState extends State<MyHomePage> {
       }
 
       try {
-     WhatsappstickerApi.addToJson(
-            identiFier: s.identiFier,
-            name: s.name,
-            publisher: s.publisher,
-            trayimagefile: basename(s.trayImageFile),
-            publisheremail: s.publisherEmail,
-            publisherwebsite: s.publisherWebsite,
-            privacypolicywebsite: s.privacyPolicyWebsite,
-            licenseagreementwebsite: s.licenseAgreementWebsite,
-            imagedataversion: "1",
-            avoidcache: false,
-            stickerImages: stickerImageList).then((value) {
-              print(value);
-            });
+        WhatsappstickerApi.addToJson(
+                identiFier: s.identiFier,
+                name: s.name,
+                publisher: s.publisher,
+                trayimagefile: basename(s.trayImageFile),
+                publisheremail: s.publisherEmail,
+                publisherwebsite: s.publisherWebsite,
+                privacypolicywebsite: s.privacyPolicyWebsite,
+                licenseagreementwebsite: s.licenseAgreementWebsite,
+                imagedataversion: "1",
+                avoidcache: false,
+                stickerImages: stickerImageList)
+            .then((value) {
+          print(value);
+        });
         // stickerMethodChannel.invokeMapMethod("addTOJson", {
         //   "identiFier": s.identiFier,
         //   "name": s.name,
